@@ -1,16 +1,20 @@
 # Backend Bienestar Estudiantil
 
-Backend desarrollado con Node.js y Express para la gestión de servicios de bienestar estudiantil. Este proyecto corresponde al Grupo 5 de la asignatura y permite consultar los servicios de apoyo disponibles mediante una API REST conectada a una base de datos MySQL.
+Backend desarrollado con Node.js y Express para la gestión de servicios de bienestar estudiantil. Este proyecto corresponde al Grupo 5 de la asignatura y permite gestionar servicios de apoyo mediante una API REST conectada a una base de datos MySQL.
+
+---
 
 ## Tecnologías utilizadas
 
-* Node.js
-* Express
-* MySQL/MariaDB
-* mysql2
-* dotenv
-* cors
-* nodemon
+- Node.js
+- Express
+- MySQL/MariaDB
+- mysql2
+- dotenv
+- cors
+- nodemon
+
+---
 
 ## Estructura del proyecto
 
@@ -21,16 +25,13 @@ backend-bienestar/
 │   ├── controllers/
 │   ├── routes/
 │   ├── services/
-│   ├── models/
 │   ├── database/
-│   ├── config/
-│   └── middlewares/
+│   ├── index.js
 │
-├── .env.example
+├── .env
 ├── script.sql
 ├── package.json
 └── README.md
-```
 
 ## Configuración del proyecto
 
@@ -82,6 +83,28 @@ servicios_bienestar
 ```http
 GET /api/servicios-bienestar
 ```
+### Crear servicio
+
+POST /api/servicios-bienestar
+
+### Body
+
+{
+  "nombre_servicio": "Apoyo psicológico",
+  "descripcion": "Atención emocional a estudiantes",
+  "horario": "08:00-16:00",
+  "contacto": "psico@universidad.edu",
+  "ubicacion": "Bloque A",
+  "estado": "Activo"
+}
+
+### Actualizar servicio
+
+PUT /api/servicios-bienestar/:id
+
+### Eliminar servicio
+
+DELETE /api/servicios-bienestar/:id
 
 ### Ejemplo de respuesta
 
@@ -101,14 +124,25 @@ GET /api/servicios-bienestar
 
 ## Pruebas
 
-El endpoint fue validado mediante Postman verificando la correcta conexión con la base de datos y la recuperación de los registros almacenados en la tabla `servicios_bienestar`.
+El backend fue probado usando Postman verificando:
+
+GET
+GET por ID
+POST
+PUT
+DELETE
+
+Todos los endpoints responden correctamente con datos en formato JSON.
 
 ## Evidencias de funcionamiento
 
-(evidencias/postman-consulta.jpeg)
+(evidencias/postman-get.png)
 
+(evidencias/postman-post.png)
 
-(evidencias/postman-respuesta.png)
+(evidencias/postman-put.png)
+
+(evidencias/postman-delete.png)
 
 ## Integrantes
 

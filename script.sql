@@ -1,9 +1,9 @@
 CREATE TABLE servicios_bienestar (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_servicio VARCHAR(100) NOT NULL,
-    descripcion TEXT,
-    horario VARCHAR(100),
-    contacto VARCHAR(100),
+    descripcion TEXT NOT NULL,
+    horario VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100) NOT NULL,
     ubicacion VARCHAR(100),
     estado VARCHAR(20) DEFAULT 'Activo'
 );
