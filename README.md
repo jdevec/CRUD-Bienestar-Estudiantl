@@ -8,7 +8,7 @@ Backend desarrollado con Node.js y Express para la gestión de servicios de bien
 
 - Node.js
 - Express
-- MySQL/MariaDB
+- MySQL / MariaDB
 - mysql2
 - dotenv
 - cors
@@ -26,12 +26,15 @@ backend-bienestar/
 │   ├── routes/
 │   ├── services/
 │   ├── database/
-│   ├── index.js
+│   └── index.js
 │
 ├── .env
 ├── script.sql
 ├── package.json
 └── README.md
+```
+
+---
 
 ## Configuración del proyecto
 
@@ -48,47 +51,41 @@ cd backend-bienestar
 npm install
 ```
 
+---
+
 ## Base de datos
 
-El proyecto utiliza MySQL/MariaDB.
+El proyecto utiliza MySQL/MariaDB. Para crear la estructura de la base de datos y los registros iniciales, se debe ejecutar el contenido del archivo `script.sql` en la base de datos `am_grupo5`.
 
-Para crear la estructura de la base de datos y los registros iniciales, ejecutar el contenido del archivo:
+La tabla principal utilizada es: `servicios_bienestar`
 
-```text
-script.sql
-```
+### Campos de la tabla
+* `id` (int)
+* `nombre_servicio` (varchar)
+* `descripcion` (text)
+* `horario` (varchar)
+* `contacto` (varchar)
+* `ubicacion` (varchar)
+* `estado` (varchar)
 
-en la base de datos `am_grupo5`.
+---
 
-La tabla principal utilizada es:
+## Endpoints Disponibles
 
-```text
-servicios_bienestar
-```
+### 1. Obtener todos los servicios de bienestar
+* **Método:** `GET`
+* **URL:** `/api/servicios-bienestar`
 
-### Campos
+### 2. Obtener un servicio por ID
+* **Método:** `GET`
+* **URL:** `/api/servicios-bienestar/:id`
 
-* id
-* nombre_servicio
-* descripcion
-* horario
-* contacto
-* ubicacion
-* estado
+### 3. Crear servicio
+* **Método:** `POST`
+* **URL:** `/api/servicios-bienestar`
+* **Body (JSON):**
 
-## Endpoint disponible
-
-### Obtener todos los servicios de bienestar
-
-```http
-GET /api/servicios-bienestar
-```
-### Crear servicio
-
-POST /api/servicios-bienestar
-
-### Body
-
+```json
 {
   "nombre_servicio": "Apoyo psicológico",
   "descripcion": "Atención emocional a estudiantes",
@@ -97,16 +94,29 @@ POST /api/servicios-bienestar
   "ubicacion": "Bloque A",
   "estado": "Activo"
 }
+```
 
-### Actualizar servicio
+### 4. Actualizar servicio
+* **Método:** `PUT`
+* **URL:** `/api/servicios-bienestar/:id`
+* **Body (JSON):**
 
-PUT /api/servicios-bienestar/:id
+```json
+{
+  "nombre_servicio": "Apoyo psicológico Actualizado",
+  "descripcion": "Atención emocional y psicopedagógica",
+  "horario": "08:00-17:00",
+  "contacto": "psico_ayuda@universidad.edu",
+  "ubicacion": "Bloque B",
+  "estado": "Activo"
+}
+```
 
-### Eliminar servicio
+### 5. Eliminar servicio
+* **Método:** `DELETE`
+* **URL:** `/api/servicios-bienestar/:id`
 
-DELETE /api/servicios-bienestar/:id
-
-### Ejemplo de respuesta
+### Ejemplo de Respuesta General (JSON)
 
 ```json
 [
@@ -122,37 +132,23 @@ DELETE /api/servicios-bienestar/:id
 ]
 ```
 
+---
+
 ## Pruebas
 
-El backend fue probado usando Postman verificando:
+El comportamiento del backend fue verificado exhaustivamente utilizando Postman, comprobando los métodos `GET`, `GET por ID`, `POST`, `PUT` y `DELETE`. Todos los endpoints responden de forma correcta con los códigos de estado HTTP correspondientes y datos en formato JSON.
 
-GET
-GET por ID
-POST
-PUT
-DELETE
+---
 
-Todos los endpoints responden correctamente con datos en formato JSON.
-
-## Evidencias de funcionamiento
-
-(evidencias/postman-get.png)
-
-(evidencias/postman-post.png)
-
-(evidencias/postman-put.png)
-
-(evidencias/postman-delete.png)
-
-## Integrantes
-
-Grupo 5 – Bienestar Estudiantil
+## Integrantes (Grupo 5)
 
 * Cedeño Mendoza Pablo José
 * Cevallos Paucar César Jahir
 * Chancay Vera Jorge Leonardo
 * Gorozabel Ferrín José Alejandro
 * Moreira Cedeño Arianna Monserrate
+
+---
 
 ## Licencia
 

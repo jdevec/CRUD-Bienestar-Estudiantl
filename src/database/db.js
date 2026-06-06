@@ -23,3 +23,11 @@ pool.getConnection()
     });
 
 module.exports = pool;
+
+pool.query('SELECT DATABASE()')
+    .then(([rows]) => {
+        console.log('Base actual:', rows);
+    })
+    .catch(err => {
+        console.error('Error prueba DB:', err);
+    });
